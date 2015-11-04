@@ -1,4 +1,4 @@
-package test;
+package test.HomeWork;
 
 import java.util.Random;
 import java.util.Scanner;

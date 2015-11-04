@@ -1,7 +1,8 @@
-package test;
+package test.HomeWork;
 
 import java.util.Random;
 import java.util.Scanner;
+
 /* 
  * 1.Poljzovatelj vvodit cislo ot 1 do 100
  * 2. Programma vivodit cislo
@@ -12,40 +13,36 @@ import java.util.Scanner;
 public class Task2 {
 
 	public static void main(String[] args) {
-		int min=0, max=100;
-		Random rand=new Random(100);
-		System.out.println("Choose a number from 1 to 100");
+		int min = 0, max = 10;
+		Random rand = new Random(10);
+		System.out.println("Choose a number from 1 to 10");
 		System.out.println(" ");
 		Scanner in = new Scanner(System.in);
 		int number = Integer.valueOf(in.nextLine());
 		System.out.println("Your choice is: " + number);
-		
-		int guess = rand.nextInt(96);
-		System.out.println("Is it M(More) or L(Less) or E(equal) " + guess);
-		Scanner an = new Scanner(System.in);
-		System.out.println("Enter string: ");
-		String enteredLine = an.nextLine();
+
+		int guess = rand.nextInt(11);
+		System.out.println("Please choose is it M(More), L(Less) or E(equal) to " + guess);
+		String enteredLine = in.nextLine();
+
 		boolean result = false;
-		while (guess != number) {
-			if (enteredLine ==("Y")) {
-				System.out.println("You wonn");
-				System.exit(0);
-			}else
-				if (enteredLine == "L") {
-					max = guess;
-					guess = guess-(max-min);
-					result = true;
-				}else if (enteredLine == "M"){
-					min = guess;
-					guess = guess + (max-min);
-					result = true;
-				}
-			if (result){
-			System.out.println(guess + " ");
-			result = false;
-//			System.out.println();
+		while (result != true) {
+			if (enteredLine.equalsIgnoreCase("E")) {
+				result = true;
+				System.out.println("You wonn, the number is  " + guess);
+				break;
+			} else if (enteredLine.equalsIgnoreCase("L")) {
+				max = guess;
+				result = false;
+			} else if (enteredLine.equalsIgnoreCase("M")) {
+				min = guess;
+				result = false;
+			}
+			int n = max - min + 1;
+			guess = rand.nextInt(11);
+			System.out.println("Please choose again is it M (more), L (less) or E to: " + guess);
+			enteredLine = in.nextLine();
 		}
 	}
 
-	}
-}	
+}
